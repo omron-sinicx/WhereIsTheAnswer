@@ -1,0 +1,52 @@
+result_path: "./result"
+## model
+init_ckpt: "./model/llama-2-7b-chat"
+model_name: "llama-2"
+## dataset
+doc_dataset: "wiki_film"
+qa_dataset: "wiki_film"
+path_doc_eval: "film_all.jsonl"
+path_doc_train: "film_all.jsonl"
+path_qa_train: "film_qa_train.jsonl"
+path_qa_eval: "film_qa_test.jsonl"
+data_output_path: "path_data_cache"
+cache_path: "./cache"
+concat_dataset: True
+reload_data: False
+seed: 1
+max_seq_len: 512
+resume: False
+## check if we want to evaluate perplexity or qa performance.
+#eval_perplex: False
+eval_qa: False
+eval_perplex: False
+## general training hyper-parameters
+wandb_run_name: "wandb_project"
+gradient_checkpointing: True
+use_flash_attn: True
+per_device_train_batch_size: 32
+per_device_eval_batch_size: 4
+## hyper-parameter
+### if use instruction-tuning style prompt.
+inst_mode_doc: False
+inst_mode_qa: True
+p_choose_qa: 0.5
+noise_ratio: 0.2
+### if shuffle document, make the value very large, depending on the size of dataset and steps.
+### Shuffling is applied to construct a dataset, not applied online.
+### This value specifies how many shuffling will be applied to dataset.
+shuffle: 0
+## steps to measure perplexity. 
+eval_steps: 1000
+## save_steps:
+save_steps: 3000
+## max_steps
+max_steps: 3000
+#log_steps: 1
+logging_steps: 10
+save_strategy: "steps"
+deepspeed: ./configs/ds_config_zero3.json
+## hyper-parameters about training method.
+dropout: 0.0
+## used for evaluation
+task_type: "QA"

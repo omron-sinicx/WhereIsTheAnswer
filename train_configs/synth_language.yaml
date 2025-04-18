@@ -1,0 +1,9 @@
+
+## dataset
+doc_dataset: "synth_language5"
+qa_dataset: "synth_language5"
+path_doc_eval: "synth_language5.jsonl"
+path_doc_train: "synth_language5.jsonl"
+path_qa_train: "synth_language5_train_qa.jsonl"
+path_qa_eval: "synth_language5_val_qa.jsonl"
+data_output_path: "path_data_cache"
